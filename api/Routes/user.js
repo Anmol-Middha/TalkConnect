@@ -24,6 +24,7 @@ router.get('/', (req, res)=>{
         propmt: 'consent',
         scope: Scope
     })
+    console.log(url);
     res.send(url);
 });
 
