@@ -4,8 +4,30 @@
   "description": "Mailing service for visually impaired",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node bin/www"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Anmol-Middha",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anmol-Middha/TalkConnect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Anmol-Middha/TalkConnect/issues"
+  },
+  "homepage": "https://github.com/Anmol-Middha/TalkConnect#readme",
+  "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "googleapis": "^40.0.0",
+    "multer": "^1.4.1",
+    "query-string": "^6.7.0"
+  }
 }
