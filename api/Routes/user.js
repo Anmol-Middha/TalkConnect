@@ -13,7 +13,7 @@ const googleConfig = {
     redirect: "https://localhost:8080/google-auth"
 };
 
-router.post('/', (req, res)=>{
+router.get('/', (req, res)=>{
     const OAuth = new google.auth.OAuth2(
         googleConfig.cliendId,
         googleConfig.clientSecret,
@@ -29,7 +29,7 @@ router.post('/', (req, res)=>{
 
 router.post('/signin', (req, res)=>{
     const code = req.cost;
-    
+
 });
 
 module.exports = router;
