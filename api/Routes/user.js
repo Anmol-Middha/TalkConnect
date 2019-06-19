@@ -26,10 +26,7 @@ router.get('/', passport.authenticate('google',
 ));
 
 router.get('/callback', function(req, res) {
-  passport.authorize('google', {
-    successRedirect : '/dashboard',
-    failureRedirect : '/'
-  })
+  res.send("helloworld");
 });
 
 module.exports = router;
