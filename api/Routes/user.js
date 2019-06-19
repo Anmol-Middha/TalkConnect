@@ -82,7 +82,7 @@ router.get('/',
 //   which, in this example, will redirect the user to the home page.
 router.get('/callback', function(req, res) {
     res.send("Hello from this page");
-  });
+});
 
 router.get('/home', (req, res)=>{
     res.send("hello to home");

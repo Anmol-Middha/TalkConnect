@@ -1,5 +1,5 @@
 const app = require("../server");
 
-app.listen('8080', (req, res)=>{
+app.listen(process.env.PORT || 80, (req, res)=>{
     console.log("running on port 8080");
 })
