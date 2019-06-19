@@ -12,7 +12,7 @@ const config = require('../config/development');
 passport.use(new GoogleStrategy({
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
-    callbackURL: "/google-auth/callback"
+    callbackURL: "https://localhost:8080/google-auth/callback"
   },
   function(accessToken, refreshToken, profile, done) {
        User.findOrCreate({ googleId: profile.id }, function (err, user) {
@@ -80,10 +80,7 @@ router.get('/', passport.authenticate('google', { scope: ['https://www.googleapi
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 router.get('/callback', function(req, res) {
-  passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res){
-    res.redirect('/home');
-  }
+  res.send("hello");
 });
 
 router.get('/home', (req, res)=>{
