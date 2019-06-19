@@ -80,7 +80,7 @@ router.get('/', passport.authenticate('google', { scope: ['https://www.googleapi
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 router.get('/callback', function(req, res) {
-  res.redirect('/home');
+  res.redirect('./home');
 });
 
 router.get('/home', (req, res)=>{
