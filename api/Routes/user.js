@@ -12,7 +12,7 @@ const config = require('../config/development');
 passport.use(new GoogleStrategy({
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
-    callbackURL: "https://talkconnect.herokuapp.com/google-auth/callback"
+    callbackURL: "/google-auth/callback"
   },
   function(accessToken, refreshToken, profile, done) {
        User.findOrCreate({ googleId: profile.id }, function (err, user) {
@@ -72,8 +72,7 @@ passport.use(new GoogleStrategy({
 //   request.  The first step in Google authentication will involve
 //   redirecting the user to google.com.  After authorization, Google
 //   will redirect the user back to this application at /auth/google/callback
-router.get('/',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+router.get('/', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
 // GET /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -81,7 +80,10 @@ router.get('/',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 router.get('/callback', function(req, res) {
-    res.send("Hello from this page");
+  passport.authenticate('google', { failureRedirect: '/' }),
+  function(req, res){
+    res.redirect('/home');
+  }
 });
 
 router.get('/home', (req, res)=>{
