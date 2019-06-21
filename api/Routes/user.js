@@ -20,6 +20,7 @@ router.get('/callback' ,passport.authenticate('google', {
   }),
   (req, res) => {
     console.log(req.user.token);
+    console.log(req.user.profile);
     res.send("hello");
 });
 
