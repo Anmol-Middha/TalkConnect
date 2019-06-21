@@ -15,13 +15,11 @@ router.get('/', passport.authenticate('google',
 ]}
 ));
 
-router.get('/callback', function(req, res) {
-  passport.authenticate('google', {
+router.get('/callback' ,passport.authenticate('google', {
     failureRedirect: '/'
   }),
   (req, res) => {
-  res.send("hello");
-  }
+    res.send("hello");
 });
 
 module.exports = router;
