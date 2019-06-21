@@ -25,8 +25,8 @@ router.get('/', passport.authenticate('google',
 ]}
 ));
 
-router.get('/callback', function(req, res) {
-  res.send("helloworld");
+router.get('/callback', passport.authenticate('google', {failureRedirect:'/'}), function(req, res) {
+  console.log(req.user.token);
 });
 
 module.exports = router;
