@@ -1,4 +1,4 @@
-const GoogleStrategy = require('passport-google-    oauth').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const config = require('./development');
 module.exports = (passport) => {
     passport.serializeUser((user, done) => {
