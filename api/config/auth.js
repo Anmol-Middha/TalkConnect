@@ -11,7 +11,6 @@ module.exports = (passport) => {
             clientID: config.google.clientID,
             clientSecret: config.google.clientSecret,
             callbackURL: "https://talkconnect.herokuapp.com/google-auth/callback"
-            // callbackURL: "https://localhost:8080/google-auth/callback"
         },
         (token, refreshToken, profile, done) => {
             return done(null, {
