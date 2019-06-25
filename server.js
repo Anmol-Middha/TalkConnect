@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const config = require('./api/config/development');
+const cors = require('cors');
 const app = express();
 
 mongoose.connect(config.mongoose.mongo_url, {useNewUrlParser: true});
@@ -13,6 +14,7 @@ const dashboardRoute = require('./api/Routes/dashboard');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
+app.use(cors());
 
 app.use((req, res, next) =>{
     res.header('Access-Control-Allow-Origin', '*');
