@@ -3,26 +3,21 @@ const router = express.Router();
 const {google} = require('googleapis');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const { generateToken, sendToken} = require('../utils/token.utils.js');
 const auth = require('../config/auth');
 
 auth(passport);
 router.use(passport.initialize());
 
-router.get('/', passport.authenticate('google', 
-{ scope: [
-  'https://www.googleapis.com/auth/userinfo.profile',
-  'https://www.googleapis.com/auth/userinfo.email',
-  'https://www.googleapis.com/auth/gmail.compose',
-]}
-));
+router.get('/', passport.authenticate('google', passport.authenticate('google-token', {session: false}), function(req, res, next) {
+  if(!req.user){
+    return res.send(401, 'User Not Authenticated');
+  }
+  req.auth = {
+    id: req.user.id
+  };
 
-router.get('/callback' ,passport.authenticate('google', {
-    failureRedirect: '/'
-  }),
-  (req, res) => {
-    console.log(req.user.token);
-    console.log(req.user.profile);
-    res.send("hello");
-});
+  next();
+}, generateToken, sendToken));
 
 module.exports = router;
