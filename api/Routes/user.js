@@ -11,6 +11,7 @@ router.use(passport.initialize());
 
 router.get('/', passport.authenticate('google', passport.authenticate('google-token', {session: false}), function(req, res, next) {
   console.log(req.token);
+  console.log("heooloajdsnkadkjka");
   if(!req.user){
     return res.send(401, 'User Not Authenticated');
   }
