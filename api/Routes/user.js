@@ -9,17 +9,17 @@ const auth = require('../config/auth');
 auth(passport);
 router.use(passport.initialize());
 
-router.get('/', passport.authenticate('google', passport.authenticate('google-token', {session: false}), function(req, res, next) {
-  console.log(req.token);
-  console.log("heooloajdsnkadkjka");
-  if(!req.user){
-    return res.send(401, 'User Not Authenticated');
-  }
-  req.auth = {
-    id: req.user.id
-  };
+router.get('/', function(req, res, next) {
+  res.status(200).json("hellos");
+  // console.log("heooloajdsnkadkjka");
+  // if(!req.user){
+  //   return res.send(401, 'User Not Authenticated');
+  // }
+  // req.auth = {
+  //   id: req.user.id
+  // };
 
-  next();
-}, generateToken, sendToken));
+  // next();
+});
 
 module.exports = router;
