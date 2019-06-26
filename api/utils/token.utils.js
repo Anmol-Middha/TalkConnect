@@ -1,4 +1,5 @@
 const config = require('../config/development');
+const jwt = require('jsonwebtoken');
 
 const createToken = function(auth) {
     return jwt.sign({
@@ -16,6 +17,6 @@ module.exports = {
   },
   sendToken: function(req, res) {
       res.setHeader('x-auth-token', req.token);
-      return res.status(200).send(JSON.stringify(req.user));
+      return res.status(200).send(JSON.stringify(req.token));
   }
 };

@@ -12,14 +12,15 @@ router.use(passport.initialize());
 router.post('/', function(req, res, next) {
   console.log("heooloajdsnkadkjka");
   console.log(req.body);
-  if(!req.user){
+  console.log(req.body.token)
+  if(!req.body.token){
     return res.send(401, 'User Not Authenticated');
   }
   req.auth = {
-    id: req.user.id
+    id: req.body.token
   };
 
   next();
-});
+}, generateToken, sendToken);
 
 module.exports = router;
