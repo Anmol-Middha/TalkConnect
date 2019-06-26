@@ -10,16 +10,15 @@ auth(passport);
 router.use(passport.initialize());
 
 router.post('/', function(req, res, next) {
-  res.status(200).json("hellos");
-  // console.log("heooloajdsnkadkjka");
-  // if(!req.user){
-  //   return res.send(401, 'User Not Authenticated');
-  // }
-  // req.auth = {
-  //   id: req.user.id
-  // };
+  console.log("heooloajdsnkadkjka");
+  if(!req.user){
+    return res.send(401, 'User Not Authenticated');
+  }
+  req.auth = {
+    id: req.user.id
+  };
 
-  // next();
+  next();
 });
 
 module.exports = router;
