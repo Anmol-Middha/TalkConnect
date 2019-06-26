@@ -9,7 +9,7 @@ const auth = require('../config/auth');
 auth(passport);
 router.use(passport.initialize());
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
   res.status(200).json("hellos");
   // console.log("heooloajdsnkadkjka");
   // if(!req.user){
