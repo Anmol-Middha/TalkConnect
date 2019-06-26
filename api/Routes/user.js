@@ -11,6 +11,7 @@ router.use(passport.initialize());
 
 router.post('/', function(req, res, next) {
   console.log("heooloajdsnkadkjka");
+  console.log(req.user);
   if(!req.user){
     return res.send(401, 'User Not Authenticated');
   }
